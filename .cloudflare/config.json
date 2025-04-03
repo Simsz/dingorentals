@@ -1,9 +1,0 @@
-{
-  "build": {
-    "command": "npm install --legacy-peer-deps && node cloudflare-build.js",
-    "output_directory": ".vercel/output/static",
-    "environment": {
-      "NODE_VERSION": "18"
-    }
-  }
-} 
