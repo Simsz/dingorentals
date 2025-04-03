@@ -6,7 +6,6 @@ import {
   Stack,
   Text,
   Link,
-  useColorModeValue,
   Flex,
   Heading,
   VStack,

@@ -2,13 +2,11 @@
 
 import {
   Box,
-  Button,
   Heading,
   Text,
   VStack,
   HStack,
   Badge,
-  useColorModeValue,
   Flex,
 } from '@chakra-ui/react'
 import Image from 'next/image'

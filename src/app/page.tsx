@@ -1,11 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { RentalTile } from '@/components/RentalTile'
-import { Box, Heading, Text, Flex, Container, Divider } from '@chakra-ui/react'
+import { Box, Heading, Text, Flex, Container } from '@chakra-ui/react'
 
 export default function Home() {
   // Rental options with pricing

@@ -1,9 +1,9 @@
 'use client'
 
-import { Box, Flex, HStack, Button, IconButton, useDisclosure, Container, Stack } from '@chakra-ui/react'
+import { Box, Flex, HStack, IconButton, useDisclosure, Container, Stack } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
-import { FaHammer, FaTools } from 'react-icons/fa'
+import { FaHammer } from 'react-icons/fa'
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link href={href} passHref>
@@ -42,7 +42,6 @@ export function Header() {
             <HStack as={'nav'} spacing={6} display={{ base: 'none', md: 'flex' }}>
               <NavLink href="/">Home</NavLink>
               <NavLink href="/booking">Book Now</NavLink>
-              <NavLink href="/pricing">Pricing</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
               <NavLink href="/contact">Contact</NavLink>
             </HStack>
@@ -101,7 +100,6 @@ export function Header() {
             <Stack as={'nav'} spacing={4}>
               <NavLink href="/">Home</NavLink>
               <NavLink href="/booking">Book Now</NavLink>
-              <NavLink href="/pricing">Pricing</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
               <NavLink href="/contact">Contact</NavLink>
             </Stack>

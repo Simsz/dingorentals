@@ -18,8 +18,6 @@ import {
   Text,
   useToast,
   Checkbox,
-  InputGroup,
-  InputLeftAddon,
 } from '@chakra-ui/react'
 
 export function BookingForm() {
@@ -41,6 +39,9 @@ export function BookingForm() {
         duration: 5000,
         isClosable: true,
       })
+      // Reset form here
+      const form = e.target as HTMLFormElement;
+      form.reset();
     }, 1500)
   }
   
@@ -175,7 +176,7 @@ export function BookingForm() {
           <FormControl isRequired>
             <FormLabel>Government-Issued ID</FormLabel>
             <Input type="file" pt={1} />
-            <FormHelperText>Please upload a clear photo of your driver's license or government ID</FormHelperText>
+            <FormHelperText>Please upload a clear photo of your driver&apos;s license or government ID</FormHelperText>
           </FormControl>
           
           <Divider my={4} />
@@ -223,15 +224,15 @@ export function BookingForm() {
             <Text fontSize="sm">
               <strong>EQUIPMENT RENTAL AGREEMENT</strong><br/><br/>
               
-              This Equipment Rental Agreement (the "Agreement") is made and entered into as of the date of submission, by and between Dingo Rentals ("Lessor") and the undersigned customer ("Lessee").<br/><br/>
+              This Equipment Rental Agreement (the &quot;Agreement&quot;) is made and entered into as of the date of submission, by and between Dingo Rentals (&quot;Lessor&quot;) and the undersigned customer (&quot;Lessee&quot;).<br/><br/>
               
-              <strong>1. EQUIPMENT:</strong> Lessor hereby leases to Lessee a Dingo TX1000 compact utility loader (the "Equipment").<br/><br/>
+              <strong>1. EQUIPMENT:</strong> Lessor hereby leases to Lessee a Dingo TX1000 compact utility loader (the &quot;Equipment&quot;).<br/><br/>
               
               <strong>2. TERM:</strong> The rental term begins on the date specified in the rental request and ends on the return date specified, unless extended by mutual agreement.<br/><br/>
               
               <strong>3. RENTAL RATE:</strong> Lessee agrees to pay the rental rate selected in this form, plus any applicable taxes, fees, and security deposit.<br/><br/>
               
-              <strong>4. SECURITY DEPOSIT:</strong> A security deposit will be pre-authorized on Lessee's credit card and will be released upon satisfactory return of the Equipment.<br/><br/>
+              <strong>4. SECURITY DEPOSIT:</strong> A security deposit will be pre-authorized on Lessee&apos;s credit card and will be released upon satisfactory return of the Equipment.<br/><br/>
               
               <strong>5. PAYMENT:</strong> Payment is due in full prior to taking possession of the Equipment.<br/><br/>
               

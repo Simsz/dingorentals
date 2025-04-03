@@ -34,7 +34,7 @@ export default function ContactPage() {
       setIsSubmitting(false)
       toast({
         title: 'Message sent!',
-        description: 'We\'ll get back to you as soon as possible.',
+        description: 'We&apos;ll get back to you as soon as possible.',
         status: 'success',
         duration: 5000,
         isClosable: true,
@@ -54,7 +54,7 @@ export default function ContactPage() {
           <Box textAlign="center">
             <Heading size="xl" mb={4}>Contact Us</Heading>
             <Text fontSize="lg" color="gray.300">
-              Have questions about renting our equipment? We're here to help!
+              Have questions about renting our equipment? We&apos;re here to help!
             </Text>
           </Box>
 
