@@ -1,103 +1,119 @@
-import Image from "next/image";
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
+import { RentalTile } from '@/components/RentalTile'
+import { Box, Heading, Text, Flex, Container, Divider } from '@chakra-ui/react'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Rental options with pricing
+  const rentalOptions = [
+    {
+      id: 'hourly',
+      title: 'Hourly Rental',
+      description: 'Perfect for quick jobs and small projects',
+      pricing: {
+        rate: '$75',
+        period: 'per hour',
+      },
+      minDuration: '4 hours',
+    },
+    {
+      id: 'daily',
+      title: 'Daily Rental',
+      description: 'Ideal for day-long projects',
+      pricing: {
+        rate: '$350',
+        period: 'per day',
+      },
+      minDuration: '1 day',
+    },
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <main className="flex min-h-screen flex-col">
+      <Header />
+      
+      <div className="flex-1 container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {rentalOptions.map((option) => (
+            <RentalTile 
+              key={option.id}
+              title={option.title}
+              description={option.description}
+              pricing={option.pricing}
+              minDuration={option.minDuration}
+              imagePath="/dingo_tx1000.jpeg"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+      
+      {/* Long-term rental section with Chakra UI styling */}
+      <Box py={16} bg="black" borderTop="1px" borderBottom="1px" borderColor="gray.800">
+        <Container maxW="container.xl">
+          <Box textAlign="center" mb={12}>
+            <Heading 
+              as="h2" 
+              fontSize="5xl" 
+              fontWeight="bold" 
+              mb={4}
+            >
+              Need a longer rental?
+            </Heading>
+            <Box w="24" h="1" bg="red.500" mx="auto" />
+          </Box>
+          
+          <Flex justifyContent="center" gap={12} flexWrap="wrap" maxW="4xl" mx="auto">
+            <Box 
+              bg="gray.900" 
+              p={8} 
+              borderRadius="lg" 
+              border="1px" 
+              borderColor="gray.800"
+              minW="240px"
+              transition="transform 0.3s"
+              _hover={{ transform: "scale(1.05)" }}
+            >
+              <Heading as="h3" size="md" mb={3}>Weekly Rate</Heading>
+              <Text fontSize="4xl" fontWeight="bold" color="red.500">$1,500</Text>
+            </Box>
+            <Box 
+              bg="gray.900" 
+              p={8} 
+              borderRadius="lg" 
+              border="1px" 
+              borderColor="gray.800"
+              minW="240px"
+              transition="transform 0.3s"
+              _hover={{ transform: "scale(1.05)" }}
+            >
+              <Heading as="h3" size="md" mb={3}>Monthly Rate</Heading>
+              <Text fontSize="4xl" fontWeight="bold" color="red.500">$4,500</Text>
+            </Box>
+          </Flex>
+          
+          <Box textAlign="center" mt={12}>
+            <Link href="/contact">
+              <Text 
+                as="span" 
+                color="red.500" 
+                _hover={{ color: "red.400" }}
+                transition="colors 0.3s"
+              >
+                <Text as="span" textDecoration="underline" mr={1} display="inline">
+                  Contact us
+                </Text>
+                for special pricing on extended rentals
+              </Text>
+            </Link>
+          </Box>
+        </Container>
+      </Box>
+      
+      <Footer />
+    </main>
+  )
 }
