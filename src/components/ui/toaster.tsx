@@ -1,43 +1,51 @@
 "use client"
 
-import {
-  Toaster as ChakraToaster,
-  Portal,
-  Spinner,
-  Stack,
-  Toast,
-  createToaster,
-} from "@chakra-ui/react"
+import { useToast as useChakraToast } from "@chakra-ui/react"
+import { useCallback } from "react"
 
-export const toaster = createToaster({
-  placement: "bottom-end",
-  pauseOnPageIdle: true,
-})
-
-export const Toaster = () => {
-  return (
-    <Portal>
-      <ChakraToaster toaster={toaster} insetInline={{ mdDown: "4" }}>
-        {(toast) => (
-          <Toast.Root width={{ md: "sm" }}>
-            {toast.type === "loading" ? (
-              <Spinner size="sm" color="blue.solid" />
-            ) : (
-              <Toast.Indicator />
-            )}
-            <Stack gap="1" flex="1" maxWidth="100%">
-              {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
-              {toast.description && (
-                <Toast.Description>{toast.description}</Toast.Description>
-              )}
-            </Stack>
-            {toast.action && (
-              <Toast.ActionTrigger>{toast.action.label}</Toast.ActionTrigger>
-            )}
-            {toast.meta?.closable && <Toast.CloseTrigger />}
-          </Toast.Root>
-        )}
-      </ChakraToaster>
-    </Portal>
-  )
+// Create a custom hook for toast
+export const useToast = () => {
+  const chakraToast = useChakraToast()
+  
+  const success = useCallback((props: { title: string; description?: string }) => {
+    return chakraToast({
+      title: props.title,
+      description: props.description,
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+      position: "bottom-right"
+    })
+  }, [chakraToast])
+  
+  const error = useCallback((props: { title: string; description?: string }) => {
+    return chakraToast({
+      title: props.title,
+      description: props.description,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+      position: "bottom-right"
+    })
+  }, [chakraToast])
+  
+  const loading = useCallback((props: { title: string; description?: string }) => {
+    return chakraToast({
+      title: props.title,
+      description: props.description,
+      status: "loading",
+      duration: null,
+      isClosable: false,
+      position: "bottom-right"
+    })
+  }, [chakraToast])
+  
+  return {
+    success,
+    error,
+    loading
+  }
 }
+
+// Empty component for compatibility
+export const Toaster = () => null;
