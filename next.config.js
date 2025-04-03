@@ -1,6 +1,5 @@
-import type { NextConfig } from 'next'
-
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: 'export',
   distDir: '.vercel/output/static',
   images: {
@@ -8,4 +7,4 @@ const config: NextConfig = {
   }
 }
 
-export default config
+module.exports = nextConfig 
